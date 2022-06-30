@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+.button-loc{
+  margin: 21px;
+  height: 35px;
+  border-radius: 10px;
+  background-image: linear-gradient(90deg, #7950f2 5%, #748ffc 95%);
+  font-size: 15px;
+}
+.select{
+  height: 35px;
+  width: 50%;
+  border-radius: 10px;
+}
+.input-form{
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+
+}
+.result-loc{
+  width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    font-size: 17px;
+    text-align: center;
+}
