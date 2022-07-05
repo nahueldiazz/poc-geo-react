@@ -5,38 +5,39 @@ import Service  from "./service/Service";
 
 function App() {
   const initialLocation = Location[0]
-  console.log(initialLocation);
-  
-  const [location, setLocation] = useState(JSON.stringify(initialLocation))
+  const service = new Service()
+  const [location, setLocation] = useState<any>({})
   const [ip, setIp] = useState('')
 
-  const handleChangeLocation = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.value);
-    setLocation(event.target.value)
-  }
-  const handleChange = () =>{
-    //aca llamaria a la funcion put
+  const handleChangeLocation = (event:React.ChangeEvent<HTMLSelectElement>) => {
+    setLocation(JSON.parse(event.target.value))
   }
 
-  const service = new Service()
-  const myIp = async () => {
+  const getGeo = async () => {
     const ipRes = await service.getIp()
     setIp(ipRes)
-    console.log(ip);
-  }
-  const getGeo = async () => {
-    const res = await service.getUserIp(ip)
-    if (res.status >= 400) {
-      //funion post
+    console.log('mi IP', ipRes);
+    const res = await service.getUserIp(ipRes)
+    console.log('res getIp', res);
+    
+    if (res.data.status >= 400) {
+      const post = await service.postUserIp(location, ipRes)
+      setLocation(initialLocation)
+      console.log('post', post);
     }else{
-      setLocation(res.data)
+      console.log('false', res.data.geoId);
+      
+      setLocation(res.data.geoId)
     }
   }
 
+  const handleChange = async () => {
+    const update = await service.update(location,ip)
+    console.log('update', update);
+  }
 
   useEffect(() => {
-    myIp()
-    // getGeo()
+      getGeo()
   }, [])
 
   return (
@@ -47,17 +48,20 @@ function App() {
         <div className="body-form">
           <select className="select" onChange={handleChangeLocation}>
           <option value=''></option>
-              {Location.map((loc) => (
-                <option key={loc.id} value={JSON.stringify(loc)}>
+              {Location.map((loc, index) => (
+                <option key={index} value={JSON.stringify(loc)}>
                   {loc.province.toString()} - {loc.locality}
                 </option>
               ))}
             </select>
  
-          <button className="button-loc" onChange={handleChange}>Cambiar Localidad</button>
+          <button className="button-loc" onClick={handleChange}>Cambiar Localidad</button>
           <div className='result-loc'>
               <h3>tu localidad es:</h3>
-          <span>{JSON.stringify(location)}</span>
+          <p>pais: {location.country}</p>
+          <p>provincia: {location.province}</p>
+          <p>departamento: {location.department}</p>
+          <p>localidad: {location.locality}</p>
           </div>
         </div>
       </div>

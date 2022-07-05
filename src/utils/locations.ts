@@ -1,7 +1,7 @@
 export const Location = [
   {
-    _id: "60f6c4348e68860009cdde6f",
-    id: 2090,
+    // _id: "60f6c4348e68860009cdde6f",
+    // id: 2090,
     country: "ARGENTINA",
     province: "CORDOBA",
     region: {
@@ -10,11 +10,11 @@ export const Location = [
     },
     department: "CAPITAL",
     locality: "CORDOBA",
-    toptraffic: true,
+    // toptraffic: true,
   },
   {
-    _id: "60f6c49ccf4af200081c13b3",
-    id: 2394,
+    // _id: "60f6c49ccf4af200081c13b3",
+    // id: 2394,
     country: "ARGENTINA",
     province: "CORDOBA",
     region: {
@@ -23,11 +23,11 @@ export const Location = [
     },
     department: "RIO CUARTO",
     locality: "RIO CUARTO",
-    toptraffic: true,
+    // toptraffic: true,
   },
   {
-    _id: "60f6c4183f8ab400095bccc4",
-    id: 1964,
+    // _id: "60f6c4183f8ab400095bccc4",
+    // id: 1964,
     country: "ARGENTINA",
     province: "CORDOBA",
     region: {
@@ -36,11 +36,11 @@ export const Location = [
     },
     department: "TOTORAL",
     locality: "AGUA DE LAS PIEDRAS",
-    toptraffic: false,
+    // toptraffic: false,
   },
   {
-    _id: "60f6c4193f8ab400095bccc7",
-    id: 1971,
+    // _id: "60f6c4193f8ab400095bccc7",
+    // id: 1971,
     country: "ARGENTINA",
     province: "CORDOBA",
     region: {
@@ -49,6 +49,6 @@ export const Location = [
     },
     department: "MARCOS JUAREZ",
     locality: "ALEJO LEDESMA",
-    toptraffic: false,
+    // toptraffic: false,
   }
 ];

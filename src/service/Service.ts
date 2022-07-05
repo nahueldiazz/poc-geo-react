@@ -7,12 +7,25 @@ export default class Service  {
     }
 
     async getUserIp(ip: any){
-        const res = await axios.get('')
-        return res 
+        console.log('ipo', ip);
+        
+        const res = await axios.get(`https://dev-back-landing-ecommerce.test.telecom.com.ar/poc-redis/${ip}`)
+        return res
     }
+    
     async postUserIp(location: any, ip: any){
-        const res = await axios.post('')
+        const data = {
+            ip: ip,
+            geoId: location
+        }
+        const res = await axios.post('https://dev-back-landing-ecommerce.test.telecom.com.ar/poc-redis/create', data)
         return res 
     }
-
+    async update(location: any, ip: any){
+        const data = {
+            geoId: location
+        }
+        const res = await axios.put(`https://dev-back-landing-ecommerce.test.telecom.com.ar/poc-redis/${ip}`, data)
+        return res 
+    }
 }
